@@ -1,0 +1,11 @@
+{
+  "name": "mi-aplicacion-node",
+  "version": "1.0.3",
+  "description": "Una aplicación Node.js simple",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Tu nombre",
+  "license": "MIT"
+}
