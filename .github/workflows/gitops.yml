@@ -18,7 +18,7 @@ jobs:
       run: docker build . --file GitOps/Dockerfile --tag rodrigodeco/gitops:v1-$GITHUB_RUN_ID
   
     - name: Login DockerHub
-      run: docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin ${{ secrets.DOCKERHUB_TOKEN }}
+      run: docker login -u ${{ secrets.DOCKERHUB_USER }} -p ${{ secrets.DOCKERHUB_TOKEN }}
       
     - name: Push to registry
       run: docker push rodrigodeco/gitops:v1-$GITHUB_RUN_ID
