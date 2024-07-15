@@ -4,7 +4,7 @@ const http = require('http');
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain; charset=utf-8'); // Especifica la codificación UTF-8
-  res.end('“Este es el server de Rodrigo Deco del entorno de PRODUCCION del primer parcial”\n');
+  res.end('“Prueba”\n');
 });
 
 // Escuchar en el puerto 3000
