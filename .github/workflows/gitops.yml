@@ -38,14 +38,13 @@ jobs:
 
     - name: Update Image Tag Values
       run: |
-        env
         export chart_dir="GitOps/manifests"
-
+        env GITHUB_RUN_ID
         pwd
-        ls -lr
-        
+        ls -laR
         # Update the values.yaml file with the new image tag
-        sed -i "s/^  gitops:v1-.*/  gitops:v1-$GITHUB_RUN_NUMBER" "$chart_dir/deployment.yaml"
+        sed -i "s/^  gitops:v1-.*/  gitops:v1-$GITHUB_RUN_NUMBER" "GitOps/manifests/deployment.yaml"
+        sed -i "s/^  gitops:v1-.*/  gitops:v1-$GITHUB_RUN_NUMBER" "GitOps/manifests/deployment.yaml"
     
     - name: Commit the changes made
       run: | 
