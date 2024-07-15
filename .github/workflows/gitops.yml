@@ -38,6 +38,7 @@ jobs:
 
     - name: Update Image Tag Values
       run: |
+        env
         export chart_dir="GitOps/manifests"
         
         # Update the values.yaml file with the new image tag
