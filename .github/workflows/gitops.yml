@@ -15,16 +15,16 @@ jobs:
     - uses: actions/checkout@v4
     
     - name: Build the Docker image
-      run: docker build . --file GitOps/Dockerfile --tag rodrigodeco/gitops:v1-$GITHUB_RUN_ID
+      run: docker build . --file GitOps/Dockerfile --tag rodrigodeco/gitops:v1-$GITHUB_RUN_NUMBER
   
     - name: Login DockerHub
       run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USER }} --password-stdin
       
     - name: Push to registry
-      run: docker push rodrigodeco/gitops:v1-$GITHUB_RUN_ID
+      run: docker push rodrigodeco/gitops:v1-$GITHUB_RUN_NUMBER
 
     - name: Build the Docker image
-      run: docker build . --file GitOps/Dockerfile --tag rodrigodeco/gitops:v1-$GITHUB_RUN_ID
+      run: docker build . --file GitOps/Dockerfile --tag rodrigodeco/gitops:v1-$GITHUB_RUN_NUMBER
     
     - name: Logout DockerHub
       run: docker logout  
@@ -40,9 +40,12 @@ jobs:
       run: |
         env
         export chart_dir="GitOps/manifests"
+
+        pwd
+        ls -lr
         
         # Update the values.yaml file with the new image tag
-        sed -i "s/^  gitops:v1-.*/  gitops:v1-$GITHUB_RUN_ID" "$chart_dir/deployment.yaml"
+        sed -i "s/^  gitops:v1-.*/  gitops:v1-$GITHUB_RUN_NUMBER" "$chart_dir/deployment.yaml"
     
     - name: Commit the changes made
       run: | 
