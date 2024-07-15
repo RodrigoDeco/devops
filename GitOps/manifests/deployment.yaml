@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.7.9
+        image: rodrigodeco/gitops:v1-$GITHUB_RUN_ID
         ports:
         - containerPort: 80
