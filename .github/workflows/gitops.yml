@@ -18,7 +18,7 @@ jobs:
       run: docker build . --file GitOps/Dockerfile --tag rodrigodeco/gitops:v1-$GITHUB_RUN_ID
   
     - name: Login DockerHub
-      run: docker login -u rodrigodeco
+      run: docker login -u $DOCKERHUB_USER -p $DOCKERHUB_TOKEN
       
     - name: Push to registry
       run: docker push rodrigodeco/gitops:v1-$GITHUB_RUN_ID
