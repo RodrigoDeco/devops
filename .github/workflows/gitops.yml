@@ -39,8 +39,9 @@ jobs:
 
     - name: Update Image Tag Values
       run: |
-        env
+        cat GitOps/manifests/deployment.yaml | grep v1
         sed -i "s/v1-[^ ]*/v1-$GITHUB_RUN_NUMBER/" GitOps/manifests/deployment.yaml
+        cat GitOps/manifests/deployment.yaml | grep v1
         
     - name: Commit the changes made
       run: | 
@@ -48,4 +49,4 @@ jobs:
         git config --global user.email 'ro.deco@hotmail.es'
         git add GitOps/manifests/deployment.yaml
         git commit -am "updating image tag"
-        git push https://${{ secrets.GIT_TOKEN }}@github.com/RodrigoDeco/devops.git
+        git push https://${{ secrets.GIT_TOKEN }}@github.com/RodrigoDeco/devops.git HEAD:master
