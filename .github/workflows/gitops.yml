@@ -30,6 +30,7 @@ jobs:
       run: docker logout  
   
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     
     steps:
@@ -45,5 +46,6 @@ jobs:
       run: | 
         git config --global user.name 'Rodrigo Deco'
         git config --global user.email 'ro.deco@hotmail.es'
+        git add GitOps/manifests/deployment.yaml
         git commit -am "updating image tag"
-        git push
+        git push https://${{ secrets.GH_PAT }}@github.com/RodrigoDeco/devops.git
