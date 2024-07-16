@@ -39,7 +39,7 @@ jobs:
     - name: Update Image Tag Values
       run: |
         env
-        sed -i "s/v1-[^ ]*/v1-$GITHUB_RUN_NUMBER" GitOps/manifests/deployment.yaml
+        sed -i "s/v1-[^ ]*/v1-$GITHUB_RUN_NUMBER/" GitOps/manifests/deployment.yaml
         
     - name: Commit the changes made
       run: | 
