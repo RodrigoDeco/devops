@@ -48,4 +48,4 @@ jobs:
         git config --global user.email 'ro.deco@hotmail.es'
         git add GitOps/manifests/deployment.yaml
         git commit -am "updating image tag"
-        git push https://${{ secrets.GH_PAT }}@github.com/RodrigoDeco/devops.git
+        git push https://${{ secrets.GIT_TOKEN }}@github.com/RodrigoDeco/devops.git
